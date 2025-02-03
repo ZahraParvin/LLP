@@ -60,13 +60,6 @@ def add_gaussian_noise(img):
     return img
 
 def change_brightness_and_contrast(img):
-    brightness = random.randint(-50, 50)
-    contrast = random.randint(-30, 30)
-
-    img = np.int16(img)
-    img = img * (contrast / 127 + 1) - contrast + brightness
-    img = np.clip(img, 0, 255)
-    img = np.uint8(img)
     return img
 
 def add_motion_blur(img):
@@ -83,8 +76,7 @@ def add_motion_blur(img):
     return img
 
 def custom_augmentation(img):
-    # Example custom augmentation: Rotate the image by a random angle
-    angle = random.uniform(-30, 30)  # Rotate between -30 and 30 degrees
+    angle = random.uniform(-30, 30)
     h, w = img.shape[:2]
     center = (w // 2, h // 2)
     rotation_matrix = cv2.getRotationMatrix2D(center, angle, 1.0)
